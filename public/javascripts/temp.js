@@ -10,6 +10,12 @@ function load() {
 	
 }
 
+
+function pisz(){
+  var events = document.getElementsByClassName('event');
+  return events.length;
+
+}
 function show_events(){
 	document.getElementById('main_menu_div').style.display = 'none';
 	document.getElementById('events_div').style.display = 'block';
