@@ -1,0 +1,180 @@
+doctype html
+
+html(ng-app='TriCity' class='no-js')
+	head
+		script(src='javascripts/temp.js')
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet' href='/Zurb/css/foundation.css')
+		script(src='javascripts/angular.min.js')
+		script(src='javascripts/menu.js')
+		script(src='js/vendor/modernizr.js')
+		script(src='javascripts/controller.js')
+
+
+	body(ng-controller='TriCity.ApplicationCtrl' onload='load()' style='overflow:auto')
+
+		div(class='row' id='city_choose' style='padding: 0; margin: 0; display: block')
+			div(class='large-12 medium-12 columns')
+				h3(style='text-align: center') Please, select a city:
+				button(class='city_btn' id='') Gdańsk
+				button(class='city_btn') Kraków
+				button(class='city_btn') Wrocław
+				button(class='city_btn') Warszawa
+				button(class='city_btn') Lublin
+				button(class='city_btn') Poznań
+				button(class='city_btn') Opole
+				button(class='city_btn') Katowice
+				button(class='city_btn') Białystok
+				button(class='city_btn') Rzeszów
+				button(class='city_btn') Toruń
+				button(class='city_btn') Szczecin
+				
+
+		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%; display: none')
+
+				
+			div(class='large-2 medium-3 columns')
+				div(class='row' style='padding: 0')
+						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
+							button(onclick='show_places()') Places
+						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
+							button(onclick='show_events()' style='width: 100%') Events
+
+				
+				div(class='row' id='menu_profile' style='overflow: hidden')		
+
+					div(id='events_div' style='display: none' class='large-12 medium-12 columns')
+						div(style='direction: ltr')
+							p(class ='event') Jedno
+							p Drugie			
+
+					
+
+					div(id='main_menu_div' class='large-12 medium-12 columns' style='display:block')
+						dl(id='main_menu' style='' )
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona1')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='startups') Startups
+											dd(onclick='pokaz("adv")') Advertising						
+												div(onclick='pokaz("adv")' class="database_div" id='adv' style='display: none')
+													h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)') Jakiś pierwszy
+													h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)')  Jakiś drugi
+											dd(onclick='pokaz("oth")') Other
+												div(onclick='pokaz("oth")' class="database_div" id='oth' style='display: none')
+													h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)') Jakiś pierwszy
+													h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)') Jakiś drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+
+								div(class='row' id='row_menu')
+									div(class='large-2 small-2 columns' id='ikona2')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='accelerators') Accelerators
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona3')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='coworking') Coworking
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona4')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='investors') Investors
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Trzeci
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona5')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='r&d_centers') R&D Centers
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona6')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='community') Community
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+
+								div(class='row' id='row_menu')
+									div(class='large-2 medium-2 columns' id='ikona7')
+										img(src='')
+									div(class='large-9 medium-8 columns')
+										dt(id='services') Services
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Pierwszy
+											dd(onclick='show_profile(5,-200,-100,"profile",this)') Drugi
+									div(class='large-1 medium-2 columns' id='menu' style='padding: 0; margin: 0')
+										input(type='checkbox' class='input_menu')
+
+					div(class='large-12 medium-12 columns' id='profile')
+						img(src='images/human_little.png')
+						p(style='display: inline; font-size: 20px' id='nazwa_imie')
+						p     
+						p Tralaliński
+						p Gdańsk, ul. Jana Sobieskiego 12
+						p Webmaster, designer, grafik
+							div(class='back_button')
+								button(onclick='show_formula(-5,-100,-200,"profile")' name='' type='')
+
+					div(class='large-12 medium-12 small-12 columns' id='formula')
+						p(style='color: orange;padding-top: 1%; margin: 0') Choose category:
+						select(name='category' style='width: 80%; height: 10%;padding: 0; margin: 0')
+							option Startups
+							option Accelerators
+							option Coworking
+							option Investors
+						p(style='color: orange;padding-top: 1%; margin: 0') Write a name: 
+						input(type='text' value='Enter name here')
+						
+						p(style='color: orange;padding-top: 1%; margin: 0') Write an adress(street and number): 
+						input(type='text' value='Enter adress here')
+						button(onclick='show_formula(-5,-100,-200,"formula")' style='position: absolute; bottom: 0; left: 2%') Back
+						button( style='position: absolute; bottom: 0; right: 2%; display: inline;') Add
+
+				div(class='row' style='margin-top: 70%;')
+					div(class='large-3 medium-3 columns')
+						p    
+					div(class='large-6 medium-6 columns' style='padding:0')
+						button(id='buttonik' onclick='show_formula(5,-200,-100,"formula")' style='width: 100%;') Add
+					div(class='large-3 medium-3 columns')
+						p  
+
+			div(class='large-10 medium-9 columns' style='height: 100%; padding-right: 0; padding-left: 0')
+				div(id='map-canvas')  
+					
+
+							
+
+
+		script.
+			new Menu('main_menu')
+
