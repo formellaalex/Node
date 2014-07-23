@@ -30,6 +30,17 @@ html(ng-app='TriCity' class='no-js')
 				button(class='city_btn') Toruń
 				button(class='city_btn') Szczecin
 
+				each user in tab
+					if(user.imie == "Adam")
+						h6 #{user.nazwisko}
+
+
+
+
+				form#formAddUser(name="adduser",method="post",action="/adduser")
+					input#inputUserName(type="text", placeholder="username", name="username")
+					input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+					button#btnSubmit(type="submit") submit
 
 		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%; display: none')
 
@@ -39,7 +50,8 @@ html(ng-app='TriCity' class='no-js')
 						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
 							button(onclick='show_places()') Places
 						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
-							button(onclick='show_events()' style='width: 100%') Events
+							button(onclick='show_events()' action='/gdansk' style='width: 100%') Events
+
 
 				
 				div(class='row' id='menu_profile' style='overflow: hidden')		
@@ -60,7 +72,7 @@ html(ng-app='TriCity' class='no-js')
 										dt(id='startups') Startups
 											dd(onclick='pokaz("adv")') Advertising						
 												div(onclick='pokaz("adv")' class="database_div" id='adv' style='display: none')
-
+														h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)')
 											dd(onclick='pokaz("oth")') Other
 												div(onclick='pokaz("oth")' class="database_div" id='oth' style='display: none')
 													h6(class='from_database' onclick='show_profile(5,-200,-100,"profile",this)') Jakiś pierwszy
