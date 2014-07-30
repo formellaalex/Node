@@ -10,7 +10,14 @@ function load() {
 	
 }
 
-
+function check() {
+  if(document.getElementById('napis').innerHTML == 'lala'){
+    alert('udalo sie');
+  }
+  else{
+    alert('nie udalo sie');
+  }
+}
 function pisz(){
   var events = document.getElementsByClassName('event');
   return events.length;
@@ -236,6 +243,7 @@ function setMarkers(map, locations) {
 }
 
 function loadScript() {
+  var city = document.getElementById('napis').innerHTML; // tutaj jest pobieranie napisu danego miasta, który będzie użyty do zoomowania mapy
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +

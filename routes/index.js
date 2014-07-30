@@ -1,22 +1,31 @@
 var express = require('express');
 var router = express.Router();
 var chlebek = require('../routes/przyklady');
+var city;
 /* GET home page. */
 
 
 
 router.get('/', function(req, res) {
-    var db = req.db;
-    var tab = new Array();
+  res.render('cities', { title: 'PolandStartUpMapChoice' });
+});
 
+
+
+router.get('/index', function(req, res) {
+  	var db = req.db;
+    var tabela = new Array();
+    var miasto = req.body.wpisz;
     var collection = db.get('userlist');
-
-    collection.find({},{},function(e,tab){
+    collection.find({},{},function(e,tabela){
         res.render('index', {
-            tab: tab
+            tabela: tabela, miasto: city
         });
     });
+
 });
+
+
 
 
 
@@ -27,15 +36,15 @@ router.post('/adduser', function(req, res) {
     var db = req.db;
 
     // Get our form values. These rely on the "name" attributes
-    var userName = req.body.username;
-    var userEmail = req.body.useremail;
+    var userName = req.body.category;
+    var userEmail = req.body.nazwisko;
 
     // Set our collection
     var collection = db.get('userlist');
 
     // Submit to the DB
     collection.insert({
-        "imie" : userName,
+        "Imie" : userName,
         "nazwisko" : userEmail
     }, function (err, doc) {
         if (err) {
@@ -44,11 +53,32 @@ router.post('/adduser', function(req, res) {
         }
         else {
             // If it worked, set the header so the address bar doesn't still say /adduser
-            res.location("/");
+            res.location("/index");
             // And forward to success page
-            res.redirect("/");
+            res.redirect("/index");
+
         }
     });
+});
+
+// tutaj jest funkcja która wysyła formularz ze strony startowej do strony głównej, z napisem z klikniętego buttona
+// wysyla tez dane z bazy danych
+router.post('/index', function(req, res) {
+
+	var miasto = req.body.wpisz;
+	city = miasto;
+ 	var db = req.db;
+    var tabela = new Array();
+
+    var collection = db.get('userlist');
+    collection.find({},{},function(e,tabela){
+        res.render('index', {
+            tabela: tabela, miasto: miasto
+        });
+    });
+
+
+    
 });
 
 module.exports = router;

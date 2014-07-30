@@ -68,6 +68,10 @@ h6{
   color: orange;
 }
 
+a {
+  color: orange;
+}
+
 dd {
   border-bottom-width: 1px;
   border-bottom-color: #AFAFAF;

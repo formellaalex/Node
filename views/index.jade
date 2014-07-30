@@ -12,39 +12,10 @@ html(ng-app='TriCity' class='no-js')
 		script(src='javascripts/controller.js')
 
 
-	body(ng-controller='TriCity.ApplicationCtrl' onload='load()' style='overflow:auto')
+	body(ng-controller='TriCity.ApplicationCtrl' onload='loadScript()' style='overflow:auto')
 
-		div(class='row' id='city_choose' style='padding: 0; margin: 0; display: block')
-			div(class='large-12 medium-12 columns')
-				h3(style='text-align: center') Please, select a city:
-				button(class='city_btn' id='') Gdańsk
-				button(class='city_btn') Kraków
-				button(class='city_btn') Wrocław
-				button(class='city_btn') Warszawa
-				button(class='city_btn') Lublin
-				button(class='city_btn') Poznań
-				button(class='city_btn') Opole
-				button(class='city_btn') Katowice
-				button(class='city_btn') Białystok
-				button(class='city_btn') Rzeszów
-				button(class='city_btn') Toruń
-				button(class='city_btn') Szczecin
-
-				each user in tab
-					if(user.imie == "Adam")
-						h6 #{user.nazwisko}
-
-
-
-
-				form#formAddUser(name="adduser",method="post",action="/adduser")
-					input#inputUserName(type="text", placeholder="username", name="username")
-					input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
-					button#btnSubmit(type="submit") submit
-
-		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%; display: none')
-
-				
+		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%;')
+			h1(id='napis') #{miasto}
 			div(class='large-2 medium-3 columns')
 				div(class='row' style='padding: 0')
 						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
@@ -158,18 +129,17 @@ html(ng-app='TriCity' class='no-js')
 
 					div(class='large-12 medium-12 small-12 columns' id='formula')
 						p(style='color: orange;padding-top: 1%; margin: 0') Choose category:
-						select(name='category' style='width: 80%; height: 10%;padding: 0; margin: 0')
-							option Startups
-							option Accelerators
-							option Coworking
-							option Investors
-						p(style='color: orange;padding-top: 1%; margin: 0') Write a name: 
-						input(type='text' value='Enter name here')
-						
-						p(style='color: orange;padding-top: 1%; margin: 0') Write an adress(street and number): 
-						input(type='text' value='Enter adress here')
+						form#formAddUser(name="adduser",method="post",action="/adduser")
+							select(name='category' style='width: 80%; height: 10%;padding: 0; margin: 0')
+								option Startups
+								option Accelerators
+								option Coworking
+								option Investors
+							p(style='color: orange;padding-top: 1%; margin: 0') Write a name: 
+							input(type='text' value='Enter name here' name='nazwisko')													
+
+							button( type='submit' name='add' style='position: absolute; bottom: 0; right: 2%; display: inline;' value='Add') Add
 						button(onclick='show_formula(-5,-100,-200,"formula")' style='position: absolute; bottom: 0; left: 2%') Back
-						button( style='position: absolute; bottom: 0; right: 2%; display: inline;') Add
 
 				div(class='row' style='margin-top: 70%;')
 					div(class='large-3 medium-3 columns')
@@ -193,4 +163,3 @@ html(ng-app='TriCity' class='no-js')
 
 		script.
 			new Menu('main_menu')
-
