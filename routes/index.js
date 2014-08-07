@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var chlebek = require('../routes/przyklady');
+var temp = require('../public/javascripts/temp');
 var city;
 /* GET home page. */
 

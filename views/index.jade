@@ -10,12 +10,20 @@ html(ng-app='TriCity' class='no-js')
 		script(src='javascripts/menu.js')
 		script(src='js/vendor/modernizr.js')
 		script(src='javascripts/controller.js')
+	script.
+		var tabka = new Array();
 
+	each playa in tabela
+		script.
+			var tab = #{playa.x};
+			tabka.push(tab);
 
-	body(ng-controller='TriCity.ApplicationCtrl' onload='loadScript()' style='overflow:auto')
+	body(ng-controller='TriCity.ApplicationCtrl' onload='loadScript(tabka)' style='overflow:auto')
 
 		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%;')
 			h1(id='napis') #{miasto}
+
+
 			div(class='large-2 medium-3 columns')
 				div(class='row' style='padding: 0')
 						div(class='large-6 medium-6 small-6 columns' style='padding: 0; margin: 0;')
@@ -162,4 +170,5 @@ html(ng-app='TriCity' class='no-js')
 
 
 		script.
-			new Menu('main_menu')
+			new Menu('main_menu');
+			

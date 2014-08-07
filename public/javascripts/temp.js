@@ -242,7 +242,13 @@ function setMarkers(map, locations) {
   }
 }
 
-function loadScript() {
+function loadScript(y) {
+  alert(y);
+  for(var i=0; i<y.length; i++){
+    var array = ['playa', -1 * y[i], 151, 6]; // tutaj dodaje plaze ze wspolrzedną y dodaną z tablicy przekazanej do funkcji
+    beaches.push(array);
+  }
+
   var city = document.getElementById('napis').innerHTML; // tutaj jest pobieranie napisu danego miasta, który będzie użyty do zoomowania mapy
   var script = document.createElement('script');
   script.type = 'text/javascript';
@@ -253,8 +259,6 @@ function loadScript() {
 
 function nowa_funkcja(){
 
-  var array = ['La playa del Suchanino', -33.890542, 151.274810, 6];
-  beaches.push(array);
-  initialize();
+
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
