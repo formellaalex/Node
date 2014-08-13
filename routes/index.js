@@ -17,7 +17,7 @@ router.get('/index', function(req, res) {
   	var db = req.db;
     var tabela = new Array();
     var miasto = req.body.wpisz;
-    var collection = db.get('userlist');
+    var collection = db.get(miasto);
     collection.find({},{},function(e,tabela){
         res.render('index', {
             tabela: tabela, miasto: city
@@ -41,7 +41,7 @@ router.post('/adduser', function(req, res) {
     var userEmail = req.body.nazwisko;
 
     // Set our collection
-    var collection = db.get('userlist');
+    var collection = db.get('gdansk');
 
     // Submit to the DB
     collection.insert({
@@ -71,7 +71,7 @@ router.post('/index', function(req, res) {
  	var db = req.db;
     var tabela = new Array();
 
-    var collection = db.get('userlist');
+    var collection = db.get(miasto);
     collection.find({},{},function(e,tabela){
         res.render('index', {
             tabela: tabela, miasto: miasto

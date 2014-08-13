@@ -36,23 +36,6 @@ function show_places(){
 
 }
 
-function show_formula(update, pos, end,id) {
- 
-  
- 
-  function frame() {
-     
-    pos += update // update parameters
-     
-    document.getElementById(id).style.marginLeft = pos + '%' // show frame
- 
-    if (pos == end)  // check finish condition
-      clearInterval(inter)
-  }
-  var inter = setInterval(frame, 10) // draw every 10ms
-
-}
-
 function show_profile(update, pos, end,id,el) {
  
   
@@ -245,7 +228,7 @@ function setMarkers(map, locations) {
 function loadScript(y) {
   alert(y);
   for(var i=0; i<y.length; i++){
-    var array = ['playa', -1 * y[i], 151, 6]; // tutaj dodaje plaze ze wspolrzedną y dodaną z tablicy przekazanej do funkcji
+    var array = ['playa', -31, y[i], 6]; // tutaj dodaje plaze ze wspolrzedną y dodaną z tablicy przekazanej do funkcji
     beaches.push(array);
   }
 
