@@ -22,3 +22,16 @@ $(document).ready(function() {
     $('#nazwa_imie').html($(this).html());
   });
 });
+
+$(document).ready(function()
+{
+  /*$('ul#lista li').children('h2').next('div').attr('id', 'level');
+  $('div#level').children('p').next('div').attr('id', 'level');
+  $('div#level').children('p').next('div').css('margin-left','30px');
+  $("ul#lista li").children("h2").click( function() { $(this).next('div').toggle(500); });
+  $('div#level').children('p').click( function() { $(this).next('div').toggle(500); });
+  */
+  $('ul').addClass('menu_main');
+  $('li').children('p').click( function() { $(this).next().toggle(500); });
+  $('li').children('p').next().css('display', 'none');
+});

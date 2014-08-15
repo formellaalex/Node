@@ -226,7 +226,6 @@ function setMarkers(map, locations) {
 }
 
 function loadScript(y) {
-  alert(y);
   for(var i=0; i<y.length; i++){
     var array = ['playa', -31, y[i], 6]; // tutaj dodaje plaze ze wspolrzedną y dodaną z tablicy przekazanej do funkcji
     beaches.push(array);

@@ -43,6 +43,17 @@ html, body {
       padding: 0;
 }
 
+.menu_main {
+  margin:0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.input_menu{
+  margin-top: 20%;
+}
+
+
 html,
 body {
   font-size: 100%;
@@ -87,17 +98,15 @@ div.back_button input{
 
 }
 
-.row{
-  margin: 0em;
-  padding: 0em;
-}
 
 #tytul{ 
   color: orange;
   float: left;
   width: 98%;
 }
-
+#napis {
+  display: none;
+}
 #menu{
   height: 43px;
 }
@@ -105,6 +114,8 @@ div.back_button input{
   border-bottom-style: solid;
   border-bottom-color: #6F6F6F;
   border-bottom-width: 1px;
+  padding: 0;
+  margin: 0;
 }
 #main_menu{
   color: orange;
@@ -156,12 +167,13 @@ div.back_button input{
 #main_menu_div,  #events_div{
   display: block; 
   direction: rtl;
-  overflow-y: scroll; 
-  overflow-x: visible; 
+  overflow-x: auto; 
   height: 310px; 
   position: relative;
   z-index: 0; 
   float: left;
+  padding:0;
+  margin: 0;
 }
 #map_canvas { height: 100%; }
 
@@ -183,10 +195,7 @@ div.back_button input{
   margin-left: 10%;
   display: block;
 }
-.input_menu{
-  padding: 0;
-  margin: 0;
-}
+
 
 .city_btn {
   display: inline;
@@ -256,7 +265,7 @@ select {
   margin-right: 0;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 0;}
+}
 
 .row_mapa{
   width: 75%;
@@ -2778,7 +2787,7 @@ a {
 /* Default paragraph styles */
 p {
   font-family: inherit;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.25rem;
@@ -4723,14 +4732,12 @@ input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-  margin: 0 0 1rem 0; }
+}
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-left: 0.5rem;
-  margin-right: 1rem;
-  margin-bottom: 0;
+
   vertical-align: baseline; }
 
 /* Normalize file input width */
