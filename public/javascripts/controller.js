@@ -1,16 +1,9 @@
-var TriCity = angular.module('TriCity', []);
-var nazwa = "xxx";
+var APP = angular.module('APP', []);
 
-
-
-TriCity.ApplicationCtrl = function ($scope) {
-
-	
-
- 	
-	$scope.odezwa = nazwa;
-
-	
+APP.ApplicationCtrl = function ($scope) {
+    
+    $scope.name = 'World';
+    
 };
 
 

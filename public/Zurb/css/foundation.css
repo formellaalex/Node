@@ -37,10 +37,10 @@ html, body {
   box-sizing: border-box; }
 
 #map-canvas {
-      height: 100%;
-      margin: 0px;
-      width: 100%;
-      padding: 0;
+  height: 100%;
+  margin: 0px;
+  width: 100%;
+  padding: 0;
 }
 
 .menu_main {
@@ -53,7 +53,9 @@ html, body {
   margin-top: 20%;
 }
 
-
+.event{
+  color: orange;
+}
 html,
 body {
   font-size: 100%;
@@ -181,8 +183,8 @@ div.back_button input{
   margin: 10%;
 }
 
-.event{
-
+.submenu{
+  display: none;
 }
 
 .from_database {

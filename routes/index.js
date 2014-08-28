@@ -1,23 +1,28 @@
 var express = require('express');
 var router = express.Router();
-var chlebek = require('../routes/przyklady');
 var temp = require('../public/javascripts/temp');
-var city;
+var city='gdansk';
 /* GET home page. */
 
 
 
 router.get('/', function(req, res) {
-  res.render('cities', { title: 'PolandStartUpMapChoice' });
+  var db = req.db;  
+  var collection = db.get('gdansk');
+  collection.find({},{},function(e,tabela){
+        res.render('index', {
+            tabela: tabela, miasto: city
+        });
+    });
 });
 
 
 
-router.get('/index', function(req, res) {
-  	var db = req.db;
+router.get('/:collection', function(req, res) {
+    var db = req.db;
     var tabela = new Array();
-    var miasto = req.body.wpisz;
-    var collection = db.get(miasto);
+    var miasto;
+    var collection = db.get(req.params.collection);
     collection.find({},{},function(e,tabela){
         res.render('index', {
             tabela: tabela, miasto: city
@@ -54,32 +59,15 @@ router.post('/adduser', function(req, res) {
         }
         else {
             // If it worked, set the header so the address bar doesn't still say /adduser
-            res.location("/index");
+            res.location('/index');
             // And forward to success page
-            res.redirect("/index");
+            res.redirect('/index');
 
         }
     });
 });
 
-// tutaj jest funkcja która wysyła formularz ze strony startowej do strony głównej, z napisem z klikniętego buttona
-// wysyla tez dane z bazy danych
-router.post('/index', function(req, res) {
-
-	var miasto = req.body.wpisz;
-	city = miasto;
- 	var db = req.db;
-    var tabela = new Array();
-
-    var collection = db.get(miasto);
-    collection.find({},{},function(e,tabela){
-        res.render('index', {
-            tabela: tabela, miasto: miasto
-        });
-    });
 
 
-    
-});
 
 module.exports = router;
