@@ -1,6 +1,10 @@
 var map;
 var markers = [];
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var geocoder;
+var xlog;
+var ylog;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var tabka = [[]];
 var x = [];
 var y = [];
@@ -21,17 +25,6 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
-  $('.ul_profile').click(function() {
-    var $lefty = $('#profile');
-    $lefty.animate({
-      left: parseInt($lefty.css('left'),10) == 0 ?
-        -$lefty.outerWidth() :
-        0
-    });
-    $('#nazwa_imie').html($(this).children().html());
-  });
-});
 
 $(document).ready(function()
 {
@@ -56,6 +49,8 @@ function show_events_menu(){
 
 
 function initialize() {
+  geocoder = new google.maps.Geocoder();//////////////////////////////////////////////////////////////////////////////
+
   var haightAshbury = new google.maps.LatLng(-12.9, 151.2);
   var mapOptions = {
     zoom: 3,
@@ -82,6 +77,39 @@ function turn(y,x){
       mapOptions);
 */
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      map.setZoom(20);
+      xlog=results[0].geometry.location.lat();
+      ylog=results[0].geometry.location.lng();
+      ylog.parseInt;
+      xlog.parseInt;
+      alert('wartosci'+xlog+ylog);
+      $('#xx').val(xlog);
+      $('#yy').val(ylog);
+      //alert('wartosci'+xlog+ylog);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+/*
+$(document).ready(function(){
+  $('#geocodebut').click(function(){
+    $('#xx').val(xlog);
+    $('#yy').val(ylog);
+  });
+});*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Add a marker to the map and push to the array.
 function addMarker(x,y) {
   for(var i=0;i<x.length; i++){
@@ -175,6 +203,7 @@ $(document).ready(function(){
   tabka.push(kategoria); 
   for(var i=0;i<x.length;i++){
     var li = document.createElement('li');
+    li.className += 'costam';
     var y_ = tabka[1][i];
     var x_ = tabka[2][i];
     li.innerHTML = tabka[3][i];
@@ -189,3 +218,23 @@ $(document).ready(function(){
 
 });
 
+
+$(document).ready(function() {
+  $('.costam').click(function() {
+    var $lefty = $('#profile');
+    $lefty.animate({
+      left: parseInt($lefty.css('left'),10) == 0 ?
+        -$lefty.outerWidth() :
+        0
+    });
+    $('#nazwa_imie').html($(this).html());
+  });
+});
+
+
+$(document).ready(function(){
+
+  $('#bucion').click(function(){
+    $('#inpucik').val('valju');
+  });
+});

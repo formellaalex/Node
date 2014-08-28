@@ -23,13 +23,7 @@ html
 
 		div(class='row' id='site_row' style='margin:0; padding:0; width: 100%; height: 100%;' ng-app="APP" ng-controller="APP.ApplicationCtrl")
 			h1(id='napis') #{miasto}
-			h2 {{ name }}
-			form
-				select(id='select_city')
-					option(value='/gdansk') gdansk
-					option(value='/wroclaw') wroclaw
-					option(value='/warszawa') wawka
-				button(id='przyciska') Click
+			
  
 
 
@@ -43,7 +37,7 @@ html
 
 
 				
-				div(class='row' id='menu_profile' style='overflow: hidden; height: 310px')		
+				div(class='row' id='menu_profile' style='overflow: hidden; height: 400px')		
 
 					div(id='events_div' style='display: none' class='large-12 medium-12 columns')
 						div(style='direction: ltr')
@@ -120,9 +114,9 @@ html
 					div(class='large-12 medium-12 small-12 columns' id='formula')
 						p(style='color: orange;padding-top: 1%; margin: 0') Choose category:
 						form#formAddUser(name="adduser",method="post",action="/adduser")
-							select(id='category' onclick='validate()' style='width: 80%; height: 10%;padding: 0; margin: 0')
-								option Entrepreneurs
-								option R&D Projects
+							select(id='category' name='kategoria' onclick='validate()' style='width: 80%; height: 10%;padding: 0; margin: 0')
+								option(value='entrepreneurs') Entrepreneurs
+								option(value='r_and_d_projects') R&D Projects
 								option Tech Hubs
 							div(id='entrepreneurs_sub' style='display:none')
 								p(style='color: orange;padding-top: 5%; margin: 0') Choose subcategory
@@ -137,16 +131,26 @@ html
 									option Incubators
 									option Parks
 							p(style='color: orange;padding-top: 5%; margin: 0') Write a name: 
-							input(type='text' value='Enter name here' name='nazwisko')		
-
-							p(style='color: orange;padding-top: 5%; margin: 0') Write an adress: 
-							input(type='text' value='Enter adress here' name='adress')												
-
-							button( type='submit' name='add' style='position: absolute; bottom: 0; right: 2%; display: inline;') Add
+							input(type='text' value='Enter name here' name='nazwa')					
+							input(id='address' type='textbox' value='Sydney, NSW')
+							input(type='button' id='geocodebut' value='Geocode' onclick='codeAddress()')
+							input(name='xx' id='xx' type='text')
+							input(name='yy' id='yy' type='text')
+							button( type='submit'  onclick='pushDoBazy()' name='add' style='position: absolute; bottom: 0; right: 2%; display: inline;') Add
 						button(class='show_hide_btn' style='position: absolute; bottom: 0; left: 2%') Back
 
 
-				div(class='row' style='margin-top: 50%;')
+				div(class='row')
+					div(class='large-6 medium-6 columns' style='margin: 0; padding: 0')
+						form
+							select(id='select_city')
+								option(value='/gdansk') Gdańsk
+								option(value='/wroclaw') Wrocław
+								option(value='/warszawa') Warszawa
+					div(class='large-6 medium-6 columns' style='margin: 0; padding: 1%')
+						button(id='przyciska') Click
+
+				div(class='row' style='margin-top: 30%;')
 					div(class='large-3 medium-3 columns')
 						p    
 					div(class='large-6 medium-6 columns' style='padding:0')
